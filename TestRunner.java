@@ -11,7 +11,3 @@ import io.cucumber.junit.CucumberOptions;
 public class TestRunner {
 
 }
-//test runner
-
-// test runner1
-// test2
