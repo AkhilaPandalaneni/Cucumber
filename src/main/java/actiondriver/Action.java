@@ -156,7 +156,7 @@ public class Action extends BaseClass  {
 			flag = ele.isDisplayed();
 			ele.sendKeys(Keys.DOWN);
 			ele.sendKeys(Keys.RETURN);
-			ele.sendKeys(Keys.TAB);
+			//ele.sendKeys(Keys.TAB);
 			flag = true;
 		} catch (Exception e) {
 			System.out.println("Location Not found");

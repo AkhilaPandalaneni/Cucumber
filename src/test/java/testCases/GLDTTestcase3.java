@@ -33,7 +33,7 @@ public class GLDTTestcase3 extends BaseClass{
 		
 	}
 
-	@Test(priority=1)
+	//@Test(priority=1)
 	public void Ropu_login(String username, String password) throws Exception {
 		loginpage = new LoginPage();
 		loginpage.bips_APP_Login(username,password);
@@ -41,7 +41,7 @@ public class GLDTTestcase3 extends BaseClass{
 	      
 	}
 	
-	@Test(priority=2)
+	//@Test(priority=2)
 	public void Opens_ExistingROLDCase() throws Exception {
 		homepage = new HomePage();
 		homepage.Open_Existing_ROLDCase();
@@ -49,7 +49,7 @@ public class GLDTTestcase3 extends BaseClass{
 	}
 
 	
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void SelectDates(String BestDate,String BaseDate,String AcheivedDate ) throws Exception {
 		ROLDPage = new ROLDPage();
 		ROLDPage.bestDate_ePAF_Submission_Date(BestDate);
@@ -60,7 +60,7 @@ public class GLDTTestcase3 extends BaseClass{
 		
 	}	
 
-	@Test(priority=4)
+	//@Test(priority=4)
     public void Checkbox_PR_Dossier_Submission_Date_Column() throws Exception {
     	
     	ROLDPage = new ROLDPage();
@@ -68,7 +68,7 @@ public class GLDTTestcase3 extends BaseClass{
     	
         }
 	
-	@Test(priority=5)
+	//@Test(priority=5)
     public void checkbox_Cut_Off_Date_for_IPR_Column() throws Exception {
     	
     	ROLDPage = new ROLDPage();
@@ -76,7 +76,7 @@ public class GLDTTestcase3 extends BaseClass{
     	
         }
     
-	@Test(priority=6)
+	//@Test(priority=6)
     public void checkbox_officialPriceUnreimbursed() throws Exception {
  	
  	ROLDPage = new ROLDPage();
@@ -84,7 +84,7 @@ public class GLDTTestcase3 extends BaseClass{
  	
      }
 	
-	@Test(priority=7)
+	//@Test(priority=7)
     public void checkbox_officialPriceReimbursed() throws Exception {
      	
      	ROLDPage = new ROLDPage();
@@ -92,7 +92,7 @@ public class GLDTTestcase3 extends BaseClass{
      	
          }
     
-	@Test(priority=8)
+	//@Test(priority=8)
     public void checkbox_Unreimbursed() throws Exception {
      	
      	ROLDPage = new ROLDPage();
@@ -100,28 +100,28 @@ public class GLDTTestcase3 extends BaseClass{
      	
          }
 	
-	@Test(priority=9)
+	//@Test(priority=9)
     public void checkbox_Reimbursed() throws Exception {
      	
      	ROLDPage = new ROLDPage();
      	ROLDPage.checkbox_Reimbursed();
      	
          }
-	@Test(priority=10)
+	//@Test(priority=10)
     public void CompleteButton() throws Exception {
      	
      	ROLDPage = new ROLDPage();
      	ROLDPage.CompleteButton();
      	
          }
-	@Test(priority=11)
+	//@Test(priority=11)
      public void CloseButton() throws Exception {
      	
      	ROLDPage = new ROLDPage();
      	ROLDPage.CloseButton();
      	
          }
-	@AfterTest
+	//@AfterTest
 	public void logout() throws Exception {
 		homepage = new HomePage();
 		homepage.logout();

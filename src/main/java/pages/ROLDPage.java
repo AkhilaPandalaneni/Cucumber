@@ -118,9 +118,9 @@ Action action= new Action();
 	
 	public void bestDate_ePAF_Submission_Date(String BestDate) throws Exception{
 		try {
-			action.switchToDefaultFrame(driver);
+			driver.switchTo().defaultContent();
 			action.switchToFrame(driver, frame1);
-			Thread.sleep(3000);
+			Thread.sleep(6000);
 			action.type(Best, BestDate);
 			
 		} catch (Exception e) {

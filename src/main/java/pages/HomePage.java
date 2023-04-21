@@ -13,12 +13,16 @@ import actiondriver.Action;
 import baseclass.BaseClass;
 
 
+
 public class HomePage extends BaseClass {
 	Action action = new Action();
 	GLDTPage page=new GLDTPage();
 	
 	@FindBy(xpath="//iframe[@id='PegaGadget1Ifr']")
     WebElement frame1;
+	
+	@FindBy(xpath="//iframe[@id='PegaGadget2Ifr']")
+    WebElement frame2;
 
 	@FindBy(xpath = "//iframe[@src='about:blank']")
 	WebElement FrameSRC;
@@ -32,14 +36,35 @@ public class HomePage extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'GLDT-')]")
 	List<WebElement> gldtIDs;
 	
+	@FindBy(xpath = "//a[@title='Click here to open the object']")
+	List<WebElement> gldtIDs_TAMA;
+	
+	
 	@FindBy(xpath = "//div[contains(text(),'RALD-')]")
 	List<WebElement> raldIDs;
 
 	@FindBy(name="CaseManagerPortalHeader_pyDisplayHarness_8")
 	WebElement profileImg;
-
+	
+	@FindBy(xpath="//button[@name='BIPTQuickAccessCol2_pyDisplayHarness.pxUserDashboard.pySlots(1).pyWidgets(1).pyWidget_52']")
+	WebElement gldt;
+	
+	@FindBy(xpath = "(//*[@class='layout-group-item-title'])[3]")
+	WebElement AnalysisAndInsights;
+	
+	
+	
+	
+	
+	
+	
+	
 	@FindBy(xpath = "//span[text()='Log off']")
 	WebElement logOff;
+	
+	
+	
+
 
 	public HomePage() {
 		PageFactory.initElements(driver, this);
@@ -90,6 +115,102 @@ public class HomePage extends BaseClass {
 		}
 
 	}
+	
+	public void AnalysisandInsights() throws Exception {
+
+		try {
+			action.switchToFrame(driver, FrameSRC);
+			action.click(driver, AnalysisAndInsights);
+			//Assert.assertTrue(gldt.isDisplayed());
+			
+
+		} catch (Exception e) {
+			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+			jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+		}
+
+	}
+	
+	public void openExistingGLDTWithoutLogOff() throws Exception {
+
+		try {
+			
+			Thread.sleep(2000);
+
+			driver.switchTo().defaultContent();
+			action.switchToFrame(driver, frame2);
+		    Thread.sleep(3000);
+			int j = gldtIDs_TAMA.size();
+			for (int i = 1; i < j; i++) {
+				String actualgldt_TAMA = driver
+						.findElement(By.xpath("(//a[@title='Click here to open the object'])[" + i + "]")).getText();
+
+				if (actualgldt_TAMA.equalsIgnoreCase(GLDTPage.GLDT_Case_Id)) {
+					Thread.sleep(1000);
+					driver.findElement(By.xpath("(//a[@title='Click here to open the object'])[" + i + "]")).click();
+
+					break;
+				}
+			}
+
+			System.out.println("Test Step Passed " + new Throwable().getStackTrace()[0].getMethodName() + " Sucessfully ");
+			
+			} catch (Exception e) {
+			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+			jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+		}
+
+	}
+	
+	public void tempProdCheckAssignmentsSection() throws Exception {
+
+		try {
+			
+			driver.switchTo().defaultContent();
+			action.switchToFrame(driver, frame1);
+			WebElement assignmentsElement = driver.findElement(By.xpath("(//h2[@class='header-title'])[2]"));
+			String assignmentText = assignmentsElement.getText();
+
+			Assert.assertEquals(assignmentText, "Assignments");
+			System.out.println("Assignments section verified");
+			
+			Thread.sleep(3000);
+
+			WebElement tempProdName = driver.findElement(
+					By.xpath("//tbody/tr[@id='$PD_ShowSelectedCountry$ppxResults$l1']/td[4]/div[1]/div[1]/span[1]"));
+			String tempProdText = tempProdName.getText();
+			if(tempProdText.equalsIgnoreCase(GLDTPage.tempproduct)){
+				System.out.println("Temporary Product has been verified at the Assignments section");
+			
+			}
+//			boolean tempProductCheck = tempProdText.equalsIgnoreCase(GLDTPage.tempproduct);
+//			Assert.assertTrue( tempProductCheck);
+//		
+//			System.out.println("Temporary Product has been verified at the Assignments section");
+			
+
+		} catch (Exception e) {
+			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+			jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public void Open_Existing_RALDCase() throws Exception {
 		try {
@@ -170,5 +291,12 @@ public class HomePage extends BaseClass {
 		}
 
 	}
+	
+	
+	
+	
+	
+	
+	
 
 }

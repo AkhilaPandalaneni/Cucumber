@@ -28,7 +28,7 @@ public class GLDTTestcase2 extends BaseClass {
 
 	}
 
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void RegulatoryAffairs_Login(String username, String password) throws Exception {
 
 		loginpage = new LoginPage();
@@ -36,7 +36,7 @@ public class GLDTTestcase2 extends BaseClass {
 		System.out.println("Test Step Passed " + new Throwable().getStackTrace()[0].getMethodName() + " Sucessfully ");
 	}
 
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void openRALDcase() throws Exception {
 		homepage = new HomePage();
 		Thread.sleep(5000);
@@ -44,14 +44,14 @@ public class GLDTTestcase2 extends BaseClass {
 
 	}
 
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void captureRALD_id() throws Exception {
 		raldpage = new RALDPage();
 
 		raldpage.capture_RALDCase_id();
 	}
 
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	public void Clickdetails(String BestDate,String Basedate) throws Exception {
 
 		raldpage = new RALDPage();
@@ -60,7 +60,7 @@ public class GLDTTestcase2 extends BaseClass {
 		raldpage.clickOnAcheivedDate();	
 	}
 
-	@Test(priority = 5)
+	//@Test(priority = 5)
 	public void checkApprovalDate() throws Exception {
 
 		raldpage = new RALDPage();
@@ -68,7 +68,7 @@ public class GLDTTestcase2 extends BaseClass {
 		raldpage.approvalDate();
 	}
 
-	@Test(priority = 6)
+	//@Test(priority = 6)
 	public void initiateropuprocess() throws Exception {
 
 		raldpage = new RALDPage();
@@ -76,7 +76,7 @@ public class GLDTTestcase2 extends BaseClass {
 		raldpage.ROPUProcess();
 	}
 
-	@Test(priority = 7)
+	//@Test(priority = 7)
 	public void Click_on_ok() throws Exception {
 
 		raldpage = new RALDPage();
@@ -84,7 +84,7 @@ public class GLDTTestcase2 extends BaseClass {
 		raldpage.clickOnOk();
 	}
 
-	@Test(priority = 8)
+	//@Test(priority = 8)
 	public void Click_on_complete() throws Exception {
 
 		raldpage = new RALDPage();
@@ -92,7 +92,7 @@ public class GLDTTestcase2 extends BaseClass {
 		raldpage.clickOnCompleteasRA();
 	}
 
-	@Test(priority = 9)
+	//@Test(priority = 9)
 	public void Click_on_close() throws Exception {
 
 		raldpage = new RALDPage();
@@ -100,12 +100,71 @@ public class GLDTTestcase2 extends BaseClass {
 		raldpage.clickOnCloseAsRA();
 	}
 
-	@AfterTest
+	//@AfterTest
 	public void logout() throws Exception {
 		homepage = new HomePage();
 		homepage.logout();
 		Thread.sleep(2000);
 		driver.quit();
 	}
+	
+	public void InitiateRopuProcessButtonVisibility_Disabled() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.InitiateRopuProcessButtonVisibility();
+		
+	}
+	
+	public void SaveAndNotifyVisibility_Disabled() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.SaveAndNotifyVisibility();
+		
+	}
+	
+	public void CompleteButtonVisibility_Disabled() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.CompleteButtonVisibility();
+		
+	}
+	
+	public void ApplyChangesPopup_Visibility() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.ApplyChangesPopup_Visibility();
+		
+	}
+	
+	public void click_on_SubmissionCheckMark_Cancel() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.SubmissionCheckMark_Cancel();
+		
+	}
+	
+	public void click_on_SubmissionCheckMark_Continue() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.SubmissionCheckMark_Continue();
+		
+	}
+	
+	public void click_on_ApprovalCheckMark_Cancel() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.ApprovalCheckMark_Cancel();
+		
+	}
+	
+	public void click_on_ApprovalCheckMark_Continue() throws Exception {
+		raldpage = new RALDPage();
+		raldpage.ApprovalCheckMark_Continue();
+		
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+
+	
 
 }

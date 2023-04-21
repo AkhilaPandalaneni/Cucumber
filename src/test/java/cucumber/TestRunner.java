@@ -9,10 +9,12 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 
-		features="src\\test\\resources\\Features",glue="stepdefinitions")
+		features="src\\test\\resources\\Features",glue="stepdefinitions",
+				tags ="@regression and @important")
 
 		public class TestRunner {			
 
 }
+
 
 //test by Kanchan

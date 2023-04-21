@@ -7,12 +7,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import org.testng.asserts.SoftAssert;
+
 import actiondriver.Action;
 import baseclass.BaseClass;
-//import utils.XL_Data_GLDT;
+
 
 public class RALDPage extends BaseClass {
 
@@ -28,7 +31,7 @@ public class RALDPage extends BaseClass {
 	WebElement expectedRALD_Case_Id;
 
 	@FindBy(xpath = "//input[@id='79a8ae4c']")
-	WebElement best;
+	WebElement SubmissionDate_Best;
 
 	@FindBy(xpath = "//input[@id='2a32f5c8']")
 	WebElement base;
@@ -39,9 +42,6 @@ public class RALDPage extends BaseClass {
 	@FindBy(linkText = "Today")
 	WebElement TodayDate2;
 
-	@FindBy(xpath = "//*[@id='e0446e74']")
-	WebElement Check_Mark2;
-
 	@FindBy(xpath = "//button[@title='Continue']")
 	WebElement Check_Mark2a;
 
@@ -49,7 +49,7 @@ public class RALDPage extends BaseClass {
 	WebElement approvalcolumn;
 
 	@FindBy(xpath = "//button[contains(text(),'Initiate ROPU Process')]")
-	WebElement InitiateRopuProcessButton;
+	WebElement InitiateRopuProcessButton1;
 
 	@FindBy(xpath = "//div[@id='modaldialog_hd']")
 	WebElement statusPopUp;
@@ -77,10 +77,60 @@ public class RALDPage extends BaseClass {
 	
 	@FindBy(xpath = "//span[contains(text(),'Welcome')]")	
 	WebElement welcome;
+	
+	@FindBy(xpath ="//button[@name='SetProductLaunchDates_pyWorkPage_94']")
+	WebElement InitiateRopuProcessButton;
+	
+	@FindBy(xpath ="//button[@name='SetProductLaunchDates_pyWorkPage_95']")
+	WebElement saveButton;
+	
+	@FindBy(xpath ="//button[@name='SetProductLaunchDates_pyWorkPage_96']")
+	WebElement CompleteButton;
+	
+	@FindBy(xpath ="//span[contains(text(),'Apply Changes')]")
+	WebElement ApplyChangesPopup;
+	
+	@FindBy(xpath ="//button[@name='ConfirmGLDTNotApplicableChanges_pyWorkPage.Timelines(4)_5']")
+	WebElement CancelButton;
+	
+	@FindBy(xpath ="//button[@title='Continue']")
+	WebElement ContinueButton;
+	
+	@FindBy(xpath ="//input[@id='7dd07b86']")
+	WebElement Check_Mark1;
+	
+	@FindBy(xpath ="(//input[@id='7dd07b86'])[2]")
+	WebElement Check_Mark11;
+	
+	@FindBy(xpath = "//*[@id='e0446e74']")
+	WebElement Check_Mark2;
+	
+	@FindBy(xpath ="(//input[@id='e0446e74'])[2]")
+	WebElement Check_Mark21;
+	
+
+	@FindBy(xpath ="//input[@id='b56200e4']")
+	WebElement ApprovalDate_Best;
+	
+	
+	
+	
+
+	
+
+	
+	
+	
+	
+	
+	
+	
 
 	public RALDPage() {
 		PageFactory.initElements(driver, this);
 	}
+	
+	static SoftAssert softAssert = new SoftAssert();
 	public static String RALD_Case_Id;
 
 	public  void capture_RALDCase_id() throws Exception {
@@ -113,7 +163,7 @@ public class RALDPage extends BaseClass {
 	public void clickOnBestDate(String BestDate) throws Exception {
 		try {
 			Thread.sleep(3000);
-			action.type(best, BestDate);
+			action.type(SubmissionDate_Best, BestDate);
 		//	best.sendKeys(BestDate);
 			Thread.sleep(3000);
 					
@@ -223,6 +273,8 @@ public class RALDPage extends BaseClass {
 		try {
 			Thread.sleep(3000);
 			action.click(driver, ok);
+
+			Thread.sleep(1000);
 			
 
 		} catch (Exception e) {
@@ -281,4 +333,140 @@ public class RALDPage extends BaseClass {
 
 	}
 
+	public void InitiateRopuProcessButtonVisibility() throws Exception {
+		try {
+		     softAssert.assertFalse(InitiateRopuProcessButton1.isEnabled());
+			 softAssert.assertAll();
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	public void SaveAndNotifyVisibility() throws Exception {
+		try {
+			softAssert.assertTrue(saveButton.isDisplayed());
+			softAssert.assertAll();
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	public void CompleteButtonVisibility() throws Exception {
+		try {
+			softAssert.assertFalse(CompleteButton.isEnabled());
+			softAssert.assertAll();
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	
+	public void ApplyChangesPopup_Visibility() throws Exception {
+		try {
+			action.explicitWait1(driver, Check_Mark2);
+			Check_Mark2.click();
+			softAssert.assertTrue(ApplyChangesPopup.isDisplayed());
+            softAssert.assertTrue(CancelButton.isDisplayed());
+			softAssert.assertTrue(ContinueButton.isDisplayed());
+			CancelButton.click();
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	
+	public void SubmissionCheckMark_Cancel() throws Exception {
+		try {
+			Thread.sleep(3000);
+			action.explicitWait(driver, Check_Mark1);
+			Check_Mark1.click();
+			CancelButton.click();
+			//WebElement best=driver.findElement(By.xpath("//img[@class='inactvIcon']"));
+			softAssert.assertTrue(SubmissionDate_Best.isEnabled());
+			softAssert.assertAll();
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	public void SubmissionCheckMark_Continue() throws Exception {
+		try {
+			Thread.sleep(3000);
+			action.explicitWait(driver, Check_Mark1);
+			Check_Mark1.click();
+            //WebElement ContinueButton=driver.findElement(By.xpath("//button[@name='ConfirmGLDTNotApplicableChanges_pyWorkPage.Timelines(4)_8']"));
+			ContinueButton.click();
+			Thread.sleep(2000);
+			Assert.assertFalse(SubmissionDate_Best.isEnabled());
+			Thread.sleep(2000);
+			Check_Mark11.click();
+			Thread.sleep(2000);
+			Assert.assertTrue(SubmissionDate_Best.isEnabled());
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	
+	public void ApprovalCheckMark_Cancel() throws Exception {
+		try {
+			Thread.sleep(3000);
+			action.explicitWait(driver, Check_Mark2);
+			Check_Mark2.click();
+			Thread.sleep(3000);
+			CancelButton.click();
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
+	public void ApprovalCheckMark_Continue() throws Exception {
+		try {
+			Thread.sleep(3200);
+			action.explicitWait(driver, Check_Mark2);
+			Check_Mark2.click();
+		    ContinueButton.click();
+			Thread.sleep(2000);
+			Assert.assertFalse(ApprovalDate_Best.isEnabled());
+			Thread.sleep(2000);
+			Check_Mark21.click();
+			Thread.sleep(2000);
+			Assert.assertTrue(ApprovalDate_Best.isEnabled());
+			} catch (Exception e) {
+				String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+				Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+				jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			}
+
+		}
+	
 }

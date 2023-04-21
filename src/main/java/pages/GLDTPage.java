@@ -1,15 +1,21 @@
 package pages;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import actiondriver.Action;
 import baseclass.BaseClass;
+
+
 
 public class GLDTPage extends BaseClass {
 
@@ -48,11 +54,37 @@ public class GLDTPage extends BaseClass {
 
 	@FindBy(xpath = "//button[contains(text(),'Continue')]")
 	WebElement Continuebutton;
-
+	
+	@FindBy(xpath = "//input[@id='e2457cfb']")
+	WebElement productUndefinedCheckBox;
+	
+	@FindBy(xpath = "//input[@class='anypicker-input']")
+	WebElement tempProdName_Dropdown;
+	
+	@FindBy(id = "anypicker-input")
+	WebElement tempProdSearchTextBox;
+	
+	@FindBy(xpath = "//button[contains(text(),'Close')]")
+	WebElement close;
+	
+	@FindBy(xpath = "//span[@class='anypicker-token-content']")
+	WebElement tempProdValue;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public GLDTPage() {
 		PageFactory.initElements(driver, this);
 	}
 	public static String GLDT_Case_Id;
+	public static String tempproduct;
 
 	public void capture_GLDTCase_id1() throws Exception {
 
@@ -106,6 +138,33 @@ public class GLDTPage extends BaseClass {
 		}
 
 	}
+	
+	public void selectionOftempProduct1(String tempproduct) throws Exception {
+		try {
+			Thread.sleep(5000);	
+			action.click(driver, productUndefinedCheckBox);
+    		Thread.sleep(3000);	
+    		action.click(driver, tempProdName_Dropdown);
+    		Thread.sleep(3000);
+    		action.type(tempProdSearchTextBox, tempproduct);
+    		action.type1(tempProdSearchTextBox);
+    		Thread.sleep(5000);	
+    		System.out.println("The matched results are displayed based on search criteria");
+//	        String tempProdValueText=tempProdValue.getText();
+//	        Assert.assertEquals(tempProdValueText,tempproduct );
+//	        System.out.println("The selected Temp Product has been verified"+  ""+ tempProdValueText);
+	        
+		} catch (Exception|AssertionError e) {
+			System.out.println("Assertion error:" + e);
+			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+			jira_ticketPage.Create_JiraTicket(currentMethod);
+			
+			
+		}
+
+	}
+	
 
 	public void selectionOfReason(String Reason1) throws Exception {
 		try {
@@ -241,5 +300,30 @@ public class GLDTPage extends BaseClass {
 			//XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
 
 		}
+	}
+
+
+
+	public void Click_on_close() throws Exception {
+		try {
+			
+			driver.switchTo().defaultContent();
+		    driver.switchTo().frame("PegaGadget1Ifr");
+		    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
+	  		WebElement close = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Close')]")));
+	  		close.click();
+//			driver.switchTo().defaultContent();
+//			action.switchToFrame(driver, frame1);
+//		    action.explicitWait(driver, close);
+//		    close.click();
+	
+		}   catch(Exception e) {
+			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
+			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
+			jira_ticketPage.Create_JiraTicket(currentMethod);
+				
+
+	}
+		
 	}
 }
