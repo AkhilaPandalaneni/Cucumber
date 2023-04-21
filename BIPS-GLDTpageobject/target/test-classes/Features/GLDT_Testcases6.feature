@@ -1,4 +1,4 @@
-Feature: feature to test User is able to Initiate RA Process with Temporary Products.
+Feature: To Verify the user can see the temporary product under Assignment section after RA process is initiated.
 
   @regression 
   Scenario Outline: gldt_TC_94
