@@ -1,6 +1,6 @@
 Feature: feature to test User is able to Initiate RA Process with Temporary Products.
 
-@regression
+  @regression
   Scenario Outline: gldt_TC_02(gldt_TC_04 & gldt_TC_06 & gldt_TC_08 merged)
     Given User is in login page
     And User Gives valid <username> and <password>

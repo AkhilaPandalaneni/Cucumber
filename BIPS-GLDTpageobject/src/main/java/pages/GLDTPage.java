@@ -15,8 +15,6 @@ import org.testng.Assert;
 import actiondriver.Action;
 import baseclass.BaseClass;
 
-
-
 public class GLDTPage extends BaseClass {
 
 	Action action = new Action();
@@ -45,7 +43,6 @@ public class GLDTPage extends BaseClass {
 	@FindBy(xpath = "//*[@node_name='CountryCardSelectable']")
 	List<WebElement> Country;
 
-
 	@FindBy(xpath = "//button[@title='Initiate RA Process']")
 	WebElement Initiateprocessbutton;
 
@@ -54,35 +51,26 @@ public class GLDTPage extends BaseClass {
 
 	@FindBy(xpath = "//button[contains(text(),'Continue')]")
 	WebElement Continuebutton;
-	
+
 	@FindBy(xpath = "//input[@id='e2457cfb']")
 	WebElement productUndefinedCheckBox;
-	
+
 	@FindBy(xpath = "//input[@class='anypicker-input']")
 	WebElement tempProdName_Dropdown;
-	
+
 	@FindBy(id = "anypicker-input")
 	WebElement tempProdSearchTextBox;
-	
+
 	@FindBy(xpath = "//button[contains(text(),'Close')]")
 	WebElement close;
-	
+
 	@FindBy(xpath = "//span[@class='anypicker-token-content']")
 	WebElement tempProdValue;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public GLDTPage() {
 		PageFactory.initElements(driver, this);
 	}
+
 	public static String GLDT_Case_Id;
 	public static String tempproduct;
 
@@ -91,7 +79,7 @@ public class GLDTPage extends BaseClass {
 		try {
 			action.switchToDefaultFrame(driver);
 			Thread.sleep(5000);
-			driver.switchTo().frame(1);			
+			driver.switchTo().frame(1);
 			GLDT_Case_Id = headerid.getText();
 			System.out.println("Actualgldtid:" + GLDT_Case_Id);
 			String ExpectedgldId = Expected.getText();
@@ -103,18 +91,16 @@ public class GLDTPage extends BaseClass {
 			sb.deleteCharAt(sb.length() - 1); // Removal of text from right side
 			GLDT_Case_Id = sb.toString();
 			System.out.println("Test Step Passed_Capture_GLDTCase_id " + GLDT_Case_Id);
-			
+
 		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-			
+
 		}
 
 	}
 
-
-	
 	public void selectionOfProduct(String product) throws Exception {
 		try {
 //			driver.switchTo().defaultContent();
@@ -127,44 +113,41 @@ public class GLDTPage extends BaseClass {
 			System.out.println(selectproductValue);
 			Assert.assertEquals(selectproductValue, product);
 			System.out.println("The selected product has been verified");
-			
-		} catch (Exception|AssertionError e) {
+
+		} catch (Exception | AssertionError e) {
 			System.out.println("Assertion error:" + e);
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-			
-			
+
 		}
 
 	}
-	
+
 	public void selectionOftempProduct1(String tempproduct) throws Exception {
 		try {
-			Thread.sleep(5000);	
+			Thread.sleep(5000);
 			action.click(driver, productUndefinedCheckBox);
-    		Thread.sleep(3000);	
-    		action.click(driver, tempProdName_Dropdown);
-    		Thread.sleep(3000);
-    		action.type(tempProdSearchTextBox, tempproduct);
-    		action.type1(tempProdSearchTextBox);
-    		Thread.sleep(5000);	
-    		System.out.println("The matched results are displayed based on search criteria");
+			Thread.sleep(3000);
+			action.click(driver, tempProdName_Dropdown);
+			Thread.sleep(3000);
+			action.type(tempProdSearchTextBox, tempproduct);
+			action.type1(tempProdSearchTextBox);
+			Thread.sleep(5000);
+			System.out.println("The matched results are displayed based on search criteria");
 //	        String tempProdValueText=tempProdValue.getText();
 //	        Assert.assertEquals(tempProdValueText,tempproduct );
 //	        System.out.println("The selected Temp Product has been verified"+  ""+ tempProdValueText);
-	        
-		} catch (Exception|AssertionError e) {
+
+		} catch (Exception | AssertionError e) {
 			System.out.println("Assertion error:" + e);
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-			
-			
+
 		}
 
 	}
-	
 
 	public void selectionOfReason(String Reason1) throws Exception {
 		try {
@@ -174,11 +157,11 @@ public class GLDTPage extends BaseClass {
 			String reasonEnteredCheck = reason.getAttribute("value");
 			Assert.assertEquals(reasonEnteredCheck, Reason1);
 			System.out.println("The entered reason has been verified Using Assert");
-			} catch (Exception e) {
+		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-					}
+		}
 
 	}
 
@@ -197,11 +180,11 @@ public class GLDTPage extends BaseClass {
 					break;
 				}
 			}
-			} catch (Exception e) {
+		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-			}
+		}
 	}
 
 	public void selectionofRopu(String Ropu1) throws Exception {
@@ -222,12 +205,12 @@ public class GLDTPage extends BaseClass {
 					break;
 				}
 			}
-			//XL_Data_GLDT.write_Pass_Result(SRN);
+			// XL_Data_GLDT.write_Pass_Result(SRN);
 		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-			//XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
+			// XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
 		}
 	}
 
@@ -238,7 +221,10 @@ public class GLDTPage extends BaseClass {
 			int j = Country.size();
 			int i;
 			for (i = 1; i <= j; i++) {
-				String Actual_Country_Name = driver.findElement(By.xpath("(//*[@node_name='CountryCardSelectable']//*[@class='heading_3'])[" + i + "]")).getText();
+				String Actual_Country_Name = driver
+						.findElement(
+								By.xpath("(//*[@node_name='CountryCardSelectable']//*[@class='heading_3'])[" + i + "]"))
+						.getText();
 
 				if (Actual_Country_Name.equalsIgnoreCase(Country1)) {
 					Thread.sleep(5000);
@@ -250,12 +236,12 @@ public class GLDTPage extends BaseClass {
 					break;
 				}
 			}
-			//XL_Data_GLDT.write_Pass_Result(SRN);
+			// XL_Data_GLDT.write_Pass_Result(SRN);
 		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-		//	XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
+			// XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
 		}
 	}
 
@@ -266,19 +252,19 @@ public class GLDTPage extends BaseClass {
 			boolean countryListPopUp_Check = selectedCountryList_popUp.isDisplayed();
 			System.out.println("Country List pop up has been checked" + " " + countryListPopUp_Check);
 			Assert.assertTrue(countryListPopUp_Check);
-			//XL_Data_GLDT.write_Pass_Result(SRN);
+			// XL_Data_GLDT.write_Pass_Result(SRN);
 		} catch (AssertionError ae) {
 			System.out.println("Assertion error:" + ae);
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-		//	XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
+			// XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
 
 		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-		//	XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
+			// XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
 
 		}
 
@@ -292,38 +278,36 @@ public class GLDTPage extends BaseClass {
 			Assert.assertEquals(continueBtnText, "Continue");
 			action.click(driver, Continuebutton);
 			System.out.println("Continue button checked");
-			//XL_Data_GLDT.write_Pass_Result(SRN);
+			// XL_Data_GLDT.write_Pass_Result(SRN);
 		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-			//XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
+			// XL_Data_GLDT.write_Fail_Result(SRN, ERN, currentMethod);
 
 		}
 	}
 
-
-
 	public void Click_on_close() throws Exception {
 		try {
-			
+
 			driver.switchTo().defaultContent();
-		    driver.switchTo().frame("PegaGadget1Ifr");
-		    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
-	  		WebElement close = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Close')]")));
-	  		close.click();
+			driver.switchTo().frame("PegaGadget1Ifr");
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+			WebElement close = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Close')]")));
+			close.click();
 //			driver.switchTo().defaultContent();
 //			action.switchToFrame(driver, frame1);
 //		    action.explicitWait(driver, close);
 //		    close.click();
-	
-		}   catch(Exception e) {
+
+		} catch (Exception e) {
 			String currentMethod = new Throwable().getStackTrace()[0].getMethodName();
 			Jira_ticketPage jira_ticketPage = new Jira_ticketPage();
 			jira_ticketPage.Create_JiraTicket(currentMethod);
-				
 
-	}
-		
+		}
+
 	}
 }

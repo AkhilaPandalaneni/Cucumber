@@ -1,6 +1,6 @@
 Feature: feature to test User user can search and select the temporary product from the 'Temporary Product' dropdown.
 
-  @regression 
+  @regression
   Scenario Outline: gldt_TC_91&92
     Given User is in login page
     And User Gives valid <username> and <password>

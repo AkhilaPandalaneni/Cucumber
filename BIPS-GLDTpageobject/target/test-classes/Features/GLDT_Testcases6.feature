@@ -1,6 +1,6 @@
 Feature: To Verify the user can see the temporary product under Assignment section after RA process is initiated.
 
-  @regression 
+  @regression
   Scenario Outline: gldt_TC_94
     Given User is in login page
     And User Gives valid <username> and <password>

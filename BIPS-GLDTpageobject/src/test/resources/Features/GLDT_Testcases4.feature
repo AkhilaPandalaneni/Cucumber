@@ -1,4 +1,4 @@
-Feature: To Verify all the buttons is available in the RALD case.
+Feature: To Verify all the buttons and not applicable checkbox functionality in the RALD case.
 
   @regression
   Scenario Outline: gldt_TC_01

@@ -1,7 +1,7 @@
 Feature: feature to test User is able to Initiate RA Process with Existing Products.
 
   @regression
-  Scenario Outline: gldt_TC_01
+  Scenario Outline: gldt_TC_01(gldt_TC_03 & gldt_TC_05 &gldt_TC_07 merged)
     Given User is in login page
     And User Gives valid <username> and <password>
     And User click on Initiate Tab
